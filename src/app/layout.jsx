@@ -2,6 +2,8 @@ import '@/styles.css'
 
 import { Header } from '@/components/header'
 
+import StoreProvider from '@/stores/store-provider'
+
 import { Rubik } from 'next/font/google'
 
 import { store } from '@/stores'
@@ -18,8 +20,10 @@ export default async function RootLayout({ children }) {
   return (
     <html>
       <body className={BodyFont.className}>
-        <Header />
-        <main>{children}</main>
+        <StoreProvider>
+          <Header />
+          <main>{children}</main>
+        </StoreProvider>
       </body>
     </html>
   )

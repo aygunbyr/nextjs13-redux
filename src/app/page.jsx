@@ -1,8 +1,12 @@
 import Link from 'next/link'
 import { AddBasketButton } from '@/components/add-basket-button'
+import { store } from '@/stores'
+import { fetchProducts, fetchProduct } from '@/stores/products-store'
 
-export default function Home() {
-  const products = []
+export default async function HomePage() {
+  await store.dispatch(fetchProducts())
+
+  const { products } = store.getState().products
 
   if (!products.length) {
     return <h1>No products</h1>

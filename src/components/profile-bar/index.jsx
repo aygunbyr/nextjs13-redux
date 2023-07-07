@@ -1,9 +1,7 @@
-import React from 'react'
 import { store } from '@/stores'
 
-function ProfileBar() {
+export function ProfileBar() {
   const { user } = store.getState().user
-  console.log(user)
 
   return (
     <div>
@@ -11,5 +9,3 @@ function ProfileBar() {
     </div>
   )
 }
-
-export default ProfileBar

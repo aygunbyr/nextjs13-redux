@@ -16,11 +16,18 @@ const BodyFont = Rubik({
 
 export default async function RootLayout({ children }) {
   await store.dispatch(fetchUser())
+  const { user } = store.getState().user
 
   return (
     <html>
       <body className={BodyFont.className}>
-        <StoreProvider>
+        <StoreProvider
+          preloadedState={{
+            user: {
+              user,
+            },
+          }}
+        >
           <Header />
           <main>{children}</main>
         </StoreProvider>

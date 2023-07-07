@@ -1,8 +1,10 @@
 'use client'
 import { Provider } from 'react-redux'
-import { store } from '.'
+import { createStore } from '.'
 
-function StoreProvider({ children }) {
+function StoreProvider({ children, preloadedState }) {
+  const store = createStore(preloadedState)
+
   return <Provider store={store}>{children}</Provider>
 }
 
